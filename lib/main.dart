@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:menus_navigation_demo/ui/common/page_animator.dart';
 import 'ui/common/page_nav_mgr.dart';
 
 import 'ui/home/home.dart';
@@ -20,6 +21,13 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SplashScreen(),
         PageNavMgr.HOME: (context) => HomeScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == PageNavMgr.HOME) {
+          return NoAnimPageRoute(builder: (_) => HomeScreen());
+        } else {
+          return NoAnimPageRoute(builder: (_) => SplashScreen());
+        }
       },
       theme: ThemeData(
         // This is the theme of your application.

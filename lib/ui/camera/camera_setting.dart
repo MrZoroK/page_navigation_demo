@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:menus_navigation_demo/ui/common/page_name.dart';
 
+import '../common/page_animator.dart';
+import '../common/page_name.dart';
 import '../common/page_nav_mgr.dart';
 
 class CameraSettingScreen extends StatelessWidget {
@@ -25,9 +26,11 @@ class CameraSettingScreen extends StatelessWidget {
           }
         ),
       ),
-      body: Center(
-        child: Text(
-          "Camera $cameraId Setting Screen"
+      body: WidgetAnimator(
+        Center(
+          child: Text(
+            "Camera $cameraId Setting Screen"
+          ),
         ),
       ),
       bottomNavigationBar: pageNavMgr.buildBottom(context, dynTab: PageName.CAMEAR_SETTING),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import '../common/page_animator.dart';
 import '../common/page_name.dart';
 import '../common/page_nav_mgr.dart';
 
@@ -20,8 +21,10 @@ class AccountSettingScreen extends StatelessWidget {
           }
         ),
       ),
-      body: Center(
+      body: WidgetAnimator(
+        Center(
         child: Text(PageName.ACCOUNT_SETTING.name + " Screen"),
+        )
       ),
       bottomNavigationBar: pageNavMgr.buildBottom(context, dynTab: PageName.ACCOUNT_SETTING),
     );

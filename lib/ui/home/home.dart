@@ -2,12 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:menus_navigation_demo/ui/common/page_name.dart';
-import 'package:menus_navigation_demo/ui/common/page_nav_mgr.dart';
-import 'package:menus_navigation_demo/ui/home/camera.dart';
-
+import '../common/page_animator.dart';
+import '../common/page_name.dart';
+import '../common/page_nav_mgr.dart';
 import '../common/drawer.dart';
-import 'shopping.dart';
+
+import 'camera_page.dart';
+import 'shopping_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -41,17 +42,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(title: Text(PageName.HOME.name)),
-      body: PageView.builder(
-        itemCount: 2,
-        controller: _pageController,
-        scrollDirection: Axis.horizontal,        
-        itemBuilder: (context, index) {
-          if (index == 0) {
-            return ShoppingPage();
-          } else {
-            return CamerasPage();
-          }
-        },
+      body: WidgetAnimator(
+        PageView.builder(
+          itemCount: 2,
+          controller: _pageController,
+          scrollDirection: Axis.horizontal,        
+          itemBuilder: (context, index) {
+            if (index == 0) {
+              return ShoppingPage();
+            } else {
+              return CamerasPage();
+            }
+          },
+        ),
       ),
       drawer: DemoDrawer(),
       bottomNavigationBar: StreamBuilder(

@@ -18,33 +18,35 @@ class CameraViewScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(PageName.CAMERA_VIEW.name)),
       drawer: DemoDrawer(),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              padding: EdgeInsets.all(0),
-              icon: Icon(
-                Icons.settings, color: Colors.blue,
-                size: 60,
+      body: WidgetAnimator(
+        Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                padding: EdgeInsets.all(0),
+                icon: Icon(
+                  Icons.settings, color: Colors.blue,
+                  size: 60,
+                ),
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    NoAnimPageRoute(
+                      builder: (_) => CameraSettingScreen(cameraId: cameraId)
+                    )           
+                  );
+                },
               ),
-              onPressed: (){
-                Navigator.push(
-                  context,
-                  NoAnimPageRoute(
-                    builder: (_) => CameraSettingScreen(cameraId: cameraId)
-                  )           
-                );
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Text("Camera View $cameraId"),
-            )
-          ],
-        )
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Text("Camera View $cameraId"),
+              )
+            ],
+          )
+        ),
       ),
       bottomNavigationBar: pageNavMgr.buildBottom(context, dynTab: PageName.CAMERA_VIEW),
     );

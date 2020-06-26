@@ -3,7 +3,6 @@ enum PageName {
   HOME,
   SETTING,
   SHOPPING,
-  CAMERA_LIST,
   CAMERA_VIEW,
   CAMEAR_SETTING,
   ACCOUNT,
@@ -21,8 +20,6 @@ extension PageNameExt on PageName {
         return "Setting";
       case PageName.SHOPPING:
         return "Shopping";
-      case PageName.CAMERA_LIST:
-        return "Camera List";
       case PageName.ACCOUNT:
         return "Account";
       case PageName.ACCOUNT_SETTING:
