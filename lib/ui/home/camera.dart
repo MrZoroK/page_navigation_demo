@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 
-import '../common/drawer.dart';
-import '../common/page_name.dart';
-import '../common/page_nav_mgr.dart';
+import '../camera/camera_view.dart';
+import '../common/page_animator.dart';
 
-class CameraListScreen extends StatelessWidget {
+class CamerasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    PageNavMgr pageNavMgr = GetIt.I.get<PageNavMgr>();
-    return Scaffold(
-      appBar: AppBar(title: Text(pageNavMgr.getPageTitle(context))),
-      body: ListView.builder(
-        itemCount: 3,
+    return Center(
+      child: ListView.builder(
+        itemCount: 10,
         itemBuilder: (context, index) {
           return FlatButton(
             child: Container(
@@ -28,13 +24,16 @@ class CameraListScreen extends StatelessWidget {
               ),
             ),
             onPressed: (){
-              Navigator.pushNamed(context, PageName.CAMERA_VIEW.path, arguments: index);
+              Navigator.push(
+                context,
+                NoAnimPageRoute(
+                  builder: (_) => CameraViewScreen(cameraId: index)
+                )           
+              );
             },
           );
         },
       ),
-      drawer: CustomDrawer(),
-      bottomNavigationBar: pageNavMgr.buildBottom(context),
     );
   }
 }

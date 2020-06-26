@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 
+import '../camera/camera_setting.dart';
+import '../common/page_animator.dart';
 import '../common/drawer.dart';
 import '../common/page_name.dart';
 import '../common/page_nav_mgr.dart';
 
 class CameraViewScreen extends StatelessWidget {
+  final int cameraId;
+  CameraViewScreen({@required this.cameraId});
+
   @override
   Widget build(BuildContext context) {
     PageNavMgr pageNavMgr = GetIt.I.get<PageNavMgr>();
-    final cameraId = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(title: Text(pageNavMgr.getPageTitle(context))),
-      drawer: CustomDrawer(),
+      appBar: AppBar(title: Text(PageName.CAMERA_VIEW.name)),
+      drawer: DemoDrawer(),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -27,7 +31,12 @@ class CameraViewScreen extends StatelessWidget {
                 size: 60,
               ),
               onPressed: (){
-                Navigator.pushNamed(context, PageName.CAMEAR_SETTING.path, arguments: cameraId);
+                Navigator.push(
+                  context,
+                  NoAnimPageRoute(
+                    builder: (_) => CameraSettingScreen(cameraId: cameraId)
+                  )           
+                );
               },
             ),
             Padding(
@@ -37,7 +46,7 @@ class CameraViewScreen extends StatelessWidget {
           ],
         )
       ),
-      bottomNavigationBar: pageNavMgr.buildBottom(context),
+      bottomNavigationBar: pageNavMgr.buildBottom(context, dynTab: PageName.CAMERA_VIEW),
     );
   }
 

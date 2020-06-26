@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-
+import '../common/page_name.dart';
 import '../common/page_nav_mgr.dart';
 
 class AccountSettingScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class AccountSettingScreen extends StatelessWidget {
     PageNavMgr pageNavMgr = GetIt.I.get<PageNavMgr>();
     return Scaffold(
       appBar: AppBar(
-        title: Text(pageNavMgr.getPageTitle(context)),
+        title: Text(PageName.ACCOUNT_SETTING.name),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
@@ -21,9 +21,9 @@ class AccountSettingScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text("Account Setting"),
+        child: Text(PageName.ACCOUNT_SETTING.name + " Screen"),
       ),
-      bottomNavigationBar: pageNavMgr.buildBottom(context),
+      bottomNavigationBar: pageNavMgr.buildBottom(context, dynTab: PageName.ACCOUNT_SETTING),
     );
   }
 }

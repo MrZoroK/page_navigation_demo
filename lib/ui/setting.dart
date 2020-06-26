@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
+import 'common/page_name.dart';
 import 'common/drawer.dart';
 import 'common/page_nav_mgr.dart';
 
@@ -9,12 +10,12 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     PageNavMgr pageNavMgr = GetIt.I.get<PageNavMgr>();
     return Scaffold(
-      appBar: AppBar(title: Text(pageNavMgr.getPageTitle(context))),
+      appBar: AppBar(title: Text(PageName.SETTING.name)),
       body: Center(
-        child: Text("Setting"),
+        child: Text(PageName.SETTING.name + " Screen"),
       ),
-      drawer: CustomDrawer(),
-      bottomNavigationBar: pageNavMgr.buildBottom(context),
+      drawer: DemoDrawer(),
+      bottomNavigationBar: pageNavMgr.buildBottom(context, dynTab: PageName.SETTING),
     );
   }
 }

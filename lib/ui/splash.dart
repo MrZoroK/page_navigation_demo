@@ -2,10 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:menus_navigation_demo/ui/common/page_nav_mgr.dart';
-
-import 'common/page_name.dart';
-import 'home.dart';
+import 'common/page_nav_mgr.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -18,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     if (_timer == null || !_timer.isActive) {
       _timer = Timer.periodic(Duration(seconds: 2), (timer) {
-        Navigator.pushReplacementNamed(context, PageName.HOME.path);
+        Navigator.pushReplacementNamed(context, PageNavMgr.HOME);
         _timer.cancel();
       });
     }

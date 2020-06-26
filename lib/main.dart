@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'ui/account/account.dart';
-import 'ui/account/account_setting.dart';
-import 'ui/camera/camera_list.dart';
-import 'ui/camera/camera_setting.dart';
-import 'ui/camera/camera_view.dart';
 import 'ui/common/page_nav_mgr.dart';
 
-import 'ui/common/page_name.dart';
-import 'ui/home.dart';
-import 'ui/setting.dart';
-import 'ui/shopping.dart';
+import 'ui/home/home.dart';
 import 'ui/splash.dart';
 
 void main() {
@@ -26,15 +18,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       initialRoute: '/',
       routes: {
-        PageName.ROOT.path: (context) => SplashScreen(),
-        PageName.HOME.path: (context) => HomeScreen(),
-        PageName.SETTING.path: (context) => SettingScreen(),
-        PageName.ACCOUNT.path: (context) => AccountScreen(),
-        PageName.ACCOUNT_SETTING.path: (context) => AccountSettingScreen(),
-        PageName.SHOPPING.path: (context) => ShoppingScreen(),
-        PageName.CAMERA_LIST.path: (context) => CameraListScreen(),
-        PageName.CAMERA_VIEW.path: (context) => CameraViewScreen(),
-        PageName.CAMEAR_SETTING.path: (context) => CameraSettingScreen()
+        '/': (context) => SplashScreen(),
+        PageNavMgr.HOME: (context) => HomeScreen(),
       },
       theme: ThemeData(
         // This is the theme of your application.
